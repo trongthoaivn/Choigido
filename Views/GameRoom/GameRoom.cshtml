@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -31,7 +30,7 @@
                 <div id="left">
                     <div id="information">aaa</div>
                     <div id="room">
-                        <table>aa</table>
+                        <table>Mã phòng:<span id="RoomId"></span></table>
                         <input id="Fen" class="form-control" type="text" placeholder="input FEN string">
                         <button id="Create_Board" type="submit" class="btn btn-primary mb-2" onclick="Create_lick()">Create Board</button>
                     </div>
@@ -44,11 +43,11 @@
             <div id="col3" class="col-lg-3">
                 <div id="right">
                     <div id="head">
-                        <div id="black_player">Black_player</div>
+                        <div id="black_player">Black_player:<span id="BlackId"></span></div>
                         <div class="time" id="black">time</div>
                         <div class="moves">Moves</div>
                         <div class="time" id="white">time</div>
-                        <div id="white_player">White_player</div>
+                        <div id="white_player">White_player:<span id="WhiteId"></span></div>
                     </div>
                     <div id="body">
 
@@ -85,3 +84,26 @@
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function (e)
+    {
+        var searchParams = new URLSearchParams(window.location.search);
+        var param = searchParams.get('Id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "../api/GetRoomInf",
+            data: { 'Id': param },
+            success: function (data) {
+                document.getElementById("RoomId").innerHTML = data.RoomID;
+                document.getElementById("BlackId").innerHTML = data.BlackId;
+                document.getElementById("WhiteId").innerHTML = data.WhiteId;
+            },
+            error: function (error) {
+                jsonValue = jQuery.parseJSON(error.responseText);
+                alert("error" + error.responseText);
+            }
+        });
+    })
+</script>
