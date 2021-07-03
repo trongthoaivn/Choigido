@@ -10,17 +10,9 @@ namespace Choigido.Controllers
     public class GameRoomController : Controller
     {
         // GET: GameRoom
-        public ActionResult GameRoom(string Id)
+        public ActionResult GameRoom()
         {
-            var room = new DAOController().getRoomInf(Id);
-            if(room != null)
-            {
-                return View(room);
-            }
-            else
-            {
-                return RedirectToAction("Trangchu", "Trangchu");
-            }
+            return View();
         }
     }
 }

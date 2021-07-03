@@ -77,11 +77,12 @@
     <div class="content">
         <h1>Cờ vua</h1>
         <h3>"Ngã ở đâu gấp đôi ở đó!"</h3>
-        <button id="myBtn">Đăng nhập</button>
-        <button id="myBtn">Đăng ký</button>
+        <button id="myBtn">Đăng nhập - Đăng ký</button>
         <button id="myBtn" class="ChoiNgay">Chơi ngay</button>
         <button id="myBtn">Đánh với máy</button>
         <button id="myBtn">Hướng dẫn</button>
+        <input id="RoomId" class="form-control" placeholder="Mã phòng" required />
+        <button id="EnterRoom">Vào phòng</button>
     </div>
 
 </body>
@@ -105,5 +106,38 @@
                 alert("error" + error.responseText);
             }
         });
+    })
+</script>
+
+<script>
+    $('#EnterRoom').click(function (e) {
+        e.preventDefault();
+        var Id = document.getElementById("RoomId").value;
+        if (Id == "") {
+            alert("Vui lòng nhập mã phòng");
+        }
+        else {
+            $.ajax({
+                type: "GET",
+                /*dataType: "json",*/
+                url: "../api/CheckRoom",
+                data: { 'Id': Id},
+                success: function (data) {
+                    if (data.RoomID != "Null") {
+                        console.log("Mã phòng là: " + data.RoomID);
+                        var url = '@Url.Action("GameRoom", "GameRoom")?Id=' + data.RoomID;
+                        window.location.href = url;
+                    }
+                    else
+                    {
+                        alert("Phòng không tồn tại hoặc đã đủ người chơi")
+                    }
+            },
+            error: function (error) {
+                jsonValue = jQuery.parseJSON(error.responseText);
+                alert("error" + error.responseText);
+            }
+        });
+        }
     })
 </script>

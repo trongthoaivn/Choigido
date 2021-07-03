@@ -38,7 +38,7 @@ namespace Choigido.Controllers
             room.GameID = MaPhong;
             room.PlayerBlackID = MaNguoiChoi;
 
-            if (new DAOController().createRoom(room)) 
+            if (new DAOController().createRoom(room))
             {
                 //return mã phòng
                 return Json(new
@@ -51,6 +51,52 @@ namespace Choigido.Controllers
                 return Json(new
                 {
                     RoomID = "Lỗi"
+                });
+            }
+        }
+
+        [HttpGet]
+        [Route("api/CheckRoom")]
+        public IHttpActionResult CheckRoom(string Id)
+        {
+            if (new DAOController().getRoomInf(Id) != null && new DAOController().checkFullPlayer(Id))
+            {
+                var room = new DAOController().getRoomInf(Id);
+                return Json(new
+                {
+                    RoomID = room.GameID,
+                    BlackId = room.PlayerBlackID,
+                    WhiteId = room.PlayerWhiteID
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    RoomID = "Null"
+                });
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GetRoomInf")]
+        public IHttpActionResult GetRoomInf(string Id)
+        {
+            if (new DAOController().getRoomInf(Id) != null)
+            {
+                var room = new DAOController().getRoomInf(Id);
+                return Json(new
+                {
+                    RoomID = room.GameID,
+                    BlackId = room.PlayerBlackID,
+                    WhiteId = room.PlayerWhiteID
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    RoomID = "Null"
                 });
             }
         }
