@@ -8,6 +8,8 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -77,6 +79,7 @@
         <h3>"Ngã ở đâu gấp đôi ở đó!"</h3>
         <button id="myBtn">Đăng nhập</button>
         <button id="myBtn">Đăng ký</button>
+        <button id="myBtn" class="ChoiNgay">Chơi ngay</button>
         <button id="myBtn">Đánh với máy</button>
         <button id="myBtn">Hướng dẫn</button>
     </div>
@@ -84,3 +87,23 @@
 </body>
 
 </html>
+
+<script>
+    $('.ChoiNgay').click(function (e) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "../api/CreateRoom",
+            /*data: source,*/
+            success: function (data) {
+                console.log("Mã phòng là: " + data.RoomID);
+                var url = '@Url.Action("GameRoom", "GameRoom")?Id=' + data.RoomID;
+                window.location.href = url;
+            },
+            error: function (error) {
+                jsonValue = jQuery.parseJSON(error.responseText);
+                alert("error" + error.responseText);
+            }
+        });
+    })
+</script>

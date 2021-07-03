@@ -1,4 +1,4 @@
-﻿
+﻿@model Choigido.Models.tblChessGame
 @{
     Layout = null;
 }
@@ -31,7 +31,7 @@
                 <div id="left">
                     <div id="information">aaa</div>
                     <div id="room">
-                        <table>aa</table>
+                        <table>Mã phòng: @Model.GameID</table>
                         <input id="Fen" class="form-control" type="text" placeholder="input FEN string">
                         <button id="Create_Board" type="submit" class="btn btn-primary mb-2" onclick="Create_lick()">Create Board</button>
                     </div>
@@ -44,7 +44,7 @@
             <div id="col3" class="col-lg-3">
                 <div id="right">
                     <div id="head">
-                        <div id="black_player">Black_player</div>
+                        <div id="black_player">Black_player: @Model.PlayerBlackID</div>
                         <div class="time" id="black">time</div>
                         <div class="moves">Moves</div>
                         <div class="time" id="white">time</div>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Choigido.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,17 @@ namespace Choigido.Controllers
     public class GameRoomController : Controller
     {
         // GET: GameRoom
-        public ActionResult GameRoom()
+        public ActionResult GameRoom(string Id)
         {
-            return View();
+            var room = new DAOController().getRoomInf(Id);
+            if(room != null)
+            {
+                return View(room);
+            }
+            else
+            {
+                return RedirectToAction("Trangchu", "Trangchu");
+            }
         }
     }
 }
