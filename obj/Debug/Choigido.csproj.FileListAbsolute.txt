@@ -261,3 +261,14 @@ D:\Choigido\obj\Debug\Choigido.csproj.CoreCompileInputs.cache
 D:\Choigido\obj\Debug\Choigido.csproj.CopyComplete
 D:\Choigido\obj\Debug\Choigido.dll
 D:\Choigido\obj\Debug\Choigido.pdb
+D:\Choigido\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Choigido\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Choigido\bin\Microsoft.Owin.dll
+D:\Choigido\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Choigido\bin\Microsoft.Owin.Security.dll
+D:\Choigido\bin\Owin.dll
+D:\Choigido\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Choigido\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Choigido\bin\Microsoft.Owin.xml
+D:\Choigido\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Choigido\bin\Microsoft.Owin.Security.xml
